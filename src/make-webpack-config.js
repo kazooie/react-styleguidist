@@ -5,6 +5,7 @@ var Initial = require('postcss-initial');
 var merge = require('webpack-merge');
 var prettyjson = require('prettyjson');
 var config = require('../src/utils/config');
+var reactTransform = require('babel-plugin-react-transform');
 
 function getPackagePath(packageName) {
 	return path.dirname(require.resolve(packageName + '/package.json'));
@@ -38,6 +39,7 @@ module.exports = function(env) {
 			}
 		},
 		resolveLoader: {
+			root: path.join(__dirname, "../node_modules"),
 			modulesDirectories: [
 				path.resolve(__dirname, '../loaders'),
 				path.resolve(__dirname, '../node_modules'),
@@ -114,7 +116,10 @@ module.exports = function(env) {
 					{
 						test: /\.jsx?$/,
 						include: includes,
-						loader: 'babel-loader',
+						loader: 'babel',
+						query: {
+							"presets": ["es2015", "react", "stage-0"]
+						}
 					}
 				]
 			}
@@ -142,7 +147,27 @@ module.exports = function(env) {
 					{
 						test: /\.jsx?$/,
 						include: includes,
-						loader: 'babel'
+						loader: 'babel',
+						query: {
+							"presets": ["es2015", "react", "stage-0"],
+							"plugins": [
+								// must be an array with options object as second item
+								[reactTransform, {
+									// must be an array of objects
+									"transforms": [{
+										// can be an NPM module name or a local path
+										"transform": "react-transform-hmr",
+										// see transform docs for "imports" and "locals" dependencies
+										"imports": ["react"],
+										"locals": ["module"]
+									}, {
+										// you can have many transforms, not just one
+										"transform": "react-transform-catch-errors",
+										"imports": ["react", "redbox-react"]
+									}]
+								}]
+							]
+						}
 					}
 				]
 			},
