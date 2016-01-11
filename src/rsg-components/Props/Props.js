@@ -16,7 +16,7 @@ export function unquote(string) {
 export default class Props extends Component {
 	static propTypes = {
 		props: PropTypes.object.isRequired
-	}
+	};
 
 	renderRows(props) {
 		let rows = [];
@@ -35,6 +35,9 @@ export default class Props extends Component {
 	}
 
 	renderType(type) {
+		if (typeof type === 'undefined') {
+			return 'undefined';
+		}
 		let { name } = type;
 		switch (name) {
 			case 'arrayOf':
@@ -74,6 +77,9 @@ export default class Props extends Component {
 	}
 
 	renderExtra(prop) {
+		if (typeof prop.type === 'undefined') {
+			return null;
+		}
 		switch (prop.type.name) {
 			case 'enum':
 				return this.renderEnum(prop);

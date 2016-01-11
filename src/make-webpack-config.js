@@ -28,7 +28,7 @@ module.exports = function(env) {
 		},
 		resolve: {
 			root: path.join(__dirname),
-			extensions: ['', '.js', '.jsx'],
+			extensions: ['', '.js', '.jsx', '.json'],
 			modulesDirectories: [
 				path.resolve(__dirname, '../node_modules'),
 				'node_modules'
@@ -64,7 +64,7 @@ module.exports = function(env) {
 				},
 				{
 					test: /\.css$/,
-					include: codeMirrorPath,
+					exclude: includes,
 					loader: 'style!css'
 				},
 				{
@@ -114,10 +114,7 @@ module.exports = function(env) {
 					{
 						test: /\.jsx?$/,
 						include: includes,
-						loader: 'babel',
-						query: {
-							stage: 0
-						}
+						loader: 'babel-loader',
 					}
 				]
 			}
@@ -145,30 +142,14 @@ module.exports = function(env) {
 					{
 						test: /\.jsx?$/,
 						include: includes,
-						loader: 'babel',
-						query: {
-							stage: 0,
-							plugins: [
-								reactTransformPath
-							],
-							extra: {
-								'react-transform': {
-									transforms: [
-										{
-											transform: 'react-transform-hmr',
-											imports: ['react'],
-											locals: ['module']
-										},
-										{
-											transform: 'react-transform-catch-errors',
-											imports: ['react', 'redbox-react']
-										}
-									]
-								}
-							}
-						}
+						loader: 'babel'
 					}
 				]
+			},
+			node: {
+				fs: 'empty',
+				module: 'empty',
+				net: 'empty'
 			}
 		});
 	}

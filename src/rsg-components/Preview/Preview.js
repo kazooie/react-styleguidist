@@ -2,8 +2,12 @@
 
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import babel from 'babel-core/browser';
 import Wrapper from 'rsg-components/Wrapper';
+import { transform } from 'babel-core';
+import es2015 from 'babel-preset-es2015';
+import stage0 from 'babel-preset-stage-0';
+import presetReact from 'babel-preset-react';
+import transformRuntime from 'babel-plugin-transform-runtime';
 
 import s from './Preview.css';
 
@@ -11,7 +15,7 @@ export default class Preview extends Component {
 	static propTypes = {
 		code: PropTypes.string.isRequired,
 		evalInContext: PropTypes.func.isRequired
-	}
+	};
 
 	constructor() {
 		super();
@@ -32,12 +36,12 @@ export default class Preview extends Component {
 	}
 
 	setComponentState(newState) {
-		this.componentState = {...this.componentState, ...newState};
+		this.componentState = Object.assign({}, this.componentState, newState);
 		setTimeout(this.executeCode.bind(this), 0);
 	}
 
 	compileCode(code) {
-		return babel.transform(code, {stage: 0}).code;
+		return transform(code, { presets: [es2015, presetReact, stage0] }).code;
 	}
 
 	executeCode() {

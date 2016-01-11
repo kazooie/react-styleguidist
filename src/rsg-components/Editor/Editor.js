@@ -18,7 +18,7 @@ export default class Editor extends Component {
 		code: PropTypes.string.isRequired,
 		highlightTheme: PropTypes.string.isRequired,
 		onChange: PropTypes.func
-	}
+	};
 	static codemirrorOptions = {
 		mode: 'jsx',
 		lineNumbers: false,
@@ -26,7 +26,7 @@ export default class Editor extends Component {
 		smartIndent: false,
 		matchBrackets: true,
 		viewportMargin: Infinity
-	}
+	};
 
 	constructor() {
 		super();

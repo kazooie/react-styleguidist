@@ -1,3 +1,13 @@
+# 2.0.0 - 2016-01-11
+
+Forked to @zillow/react-styleguidist:
+
+* Upgraded to Babel 6
+* Upgraded other dependencies
+* Fixed static property syntax
+* Stopped throwing exceptions with undefined prop types 
+
+
 # 1.3.1 - 2015-12-16
 
 Bug fixes by @lovelybooks:
