@@ -76,7 +76,7 @@ module.exports = function(env) {
 				}
 			],
 			noParse: [
-				/babel-core\/browser.js/
+				/babel-standalone.js/
 			]
 		},
 		postcss: function() {
@@ -170,11 +170,6 @@ module.exports = function(env) {
 						}
 					}
 				]
-			},
-			node: {
-				fs: 'empty',
-				module: 'empty',
-				net: 'empty'
 			}
 		});
 	}

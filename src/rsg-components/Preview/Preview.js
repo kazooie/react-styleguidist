@@ -3,13 +3,8 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import Wrapper from 'rsg-components/Wrapper';
-import { transform } from 'babel-core';
-import es2015 from 'babel-preset-es2015';
-import stage0 from 'babel-preset-stage-0';
-import presetReact from 'babel-preset-react';
-import transformRuntime from 'babel-plugin-transform-runtime';
-
 import s from './Preview.css';
+import '../../../lib/babel-standalone';
 
 export default class Preview extends Component {
 	static propTypes = {
@@ -41,7 +36,10 @@ export default class Preview extends Component {
 	}
 
 	compileCode(code) {
-		return transform(code, { presets: [es2015, presetReact, stage0] }).code;
+		/**
+		 * transform pre-compiled by react-styleguide, see compileBabel.js.
+		 */
+		return window.babelTransform(code);
 	}
 
 	executeCode() {

@@ -1,3 +1,7 @@
+# 2.0.3 - 2016-01-19
+
+* Compile Babel separately from build or server webpack step -> faster building for development
+
 # 2.0.0 - 2016-01-11
 
 Forked to @zillow/react-styleguidist:
