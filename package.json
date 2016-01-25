@@ -1,7 +1,7 @@
 {
   "name": "@zillow/react-styleguidist",
   "description": "React components styleguide generator",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "author": {
     "name": "Artem Sapegin",
     "url": "http://sapegin.me/"
@@ -18,6 +18,7 @@
     "styleguidist": "bin/styleguidist"
   },
   "files": [
+    "lib",
     "bin",
     "src",
     "loaders"
