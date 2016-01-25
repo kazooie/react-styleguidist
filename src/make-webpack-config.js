@@ -28,13 +28,8 @@ module.exports = function(env) {
 			filename: 'build/bundle.js'
 		},
 		resolve: {
-<<<<<<< HEAD
 			root: __dirname,
-			extensions: ['', '.js', '.jsx'],
-=======
-			root: path.join(__dirname),
 			extensions: ['', '.js', '.jsx', '.json'],
->>>>>>> feature/babel-6
 			modulesDirectories: [
 				path.resolve(__dirname, '../node_modules'),
 				'node_modules'

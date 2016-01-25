@@ -12,7 +12,7 @@ export default class RandomButton extends Component {
 		 * List of possible labels.
 		 */
 		variants: PropTypes.array.isRequired
-	}
+	};
 
 	constructor(props) {
 		super();
