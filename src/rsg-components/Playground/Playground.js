@@ -9,7 +9,7 @@ export default class Playground extends Component {
 		highlightTheme: PropTypes.string.isRequired,
 		code: PropTypes.string.isRequired,
 		evalInContext: PropTypes.func.isRequired,
-	}
+	};
 
 	constructor(props) {
 		super();
@@ -18,7 +18,7 @@ export default class Playground extends Component {
 		};
 	}
 
-	handleChange = (newCode) => {
+	handleChange(newCode) {
 		this.setState({
 			code: newCode
 		});
@@ -43,7 +43,7 @@ export default class Playground extends Component {
 					<Preview code={code} evalInContext={this.props.evalInContext}/>
 				</div>
 				<div className={s.editor}>
-					<Editor code={code} highlightTheme={highlightTheme} onChange={this.handleChange}/>
+					<Editor code={code} highlightTheme={highlightTheme} onChange={this.handleChange.bind(this)}/>
 				</div>
 			</div>
 		);

@@ -2,16 +2,15 @@
 
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import babel from 'babel-core/browser';
 import Wrapper from 'rsg-components/Wrapper';
-
 import s from './Preview.css';
+import '../../../lib/babel-standalone';
 
 export default class Preview extends Component {
 	static propTypes = {
 		code: PropTypes.string.isRequired,
 		evalInContext: PropTypes.func.isRequired
-	}
+	};
 
 	constructor() {
 		super();
@@ -32,12 +31,15 @@ export default class Preview extends Component {
 	}
 
 	setComponentState(newState) {
-		this.componentState = {...this.componentState, ...newState};
+		this.componentState = Object.assign({}, this.componentState, newState);
 		setTimeout(this.executeCode.bind(this), 0);
 	}
 
 	compileCode(code) {
-		return babel.transform(code, {stage: 0}).code;
+		/**
+		 * transform pre-compiled by react-styleguide, see compileBabel.js.
+		 */
+		return window.babelTransform(code);
 	}
 
 	executeCode() {

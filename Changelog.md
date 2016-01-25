@@ -1,3 +1,16 @@
+# 2.0.3 - 2016-01-19
+
+* Compile Babel separately from build or server webpack step -> faster building for development
+
+# 2.0.0 - 2016-01-11
+
+Forked
+
+* Upgraded to Babel 6
+* Upgraded other dependencies
+* Fixed static property syntax
+* Stopped throwing exceptions with undefined prop types 
+
 # 1.3.2 - 2016-01-08
 
 * Remove ExtractTextPlugin.

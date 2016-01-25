@@ -1,7 +1,7 @@
 {
   "name": "react-styleguidist",
   "description": "React components styleguide generator",
-  "version": "1.3.2",
+  "version": "2.0.4",
   "homepage": "https://github.com/sapegin/react-styleguidist",
   "author": {
     "name": "Artem Sapegin",
@@ -20,6 +20,7 @@
     "styleguidist": "bin/styleguidist"
   },
   "files": [
+    "lib",
     "bin",
     "src",
     "loaders"
@@ -28,12 +29,16 @@
     "node": ">=0.12.0"
   },
   "dependencies": {
-    "babel-core": "5.8.30",
-    "babel-loader": "5.3.2",
-    "babel-plugin-react-transform": "1.1.1",
-    "babel-runtime": "5.8.25",
+    "babel-core": "6.4.0",
+    "babel-loader": "6.2.1",
+    "babel-plugin-react-transform": "2.0.0",
+    "babel-plugin-transform-runtime": "^6.4.0",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "babel-runtime": "6.3.19",
     "chalk": "1.1.1",
-    "classnames": "~2.2.2",
+    "classnames": "~2.2.3",
     "codemirror": "5.10.0",
     "css-loader": "0.23.1",
     "express": "4.13.3",
@@ -42,20 +47,20 @@
     "html-webpack-plugin": "1.7.0",
     "json-loader": "0.5.4",
     "lodash": "3.10.1",
-    "markdown-it": "5.0.3",
+    "markdown-it": "5.1.0",
     "markdown-react-js": "0.3.0",
     "minimist": "1.2.0",
     "postcss-initial": "1.4.0",
     "postcss-loader": "0.8.0",
     "prettyjson": "1.1.3",
     "react-codemirror": "0.2.3",
-    "react-docgen": "2.5.0",
+    "react-docgen": "2.6.0",
     "react-sticky": "~3.0.0",
     "react-transform-catch-errors": "1.0.1",
     "react-transform-hmr": "1.0.1",
     "redbox-react": "1.2.0",
     "style-loader": "0.13.0",
-    "webpack": "1.12.9",
+    "webpack": "1.12.10",
     "webpack-dev-middleware": "1.4.0",
     "webpack-hot-middleware": "2.6.0",
     "webpack-merge": "0.7.1"
@@ -65,21 +70,19 @@
     "react-dom": ">=0.14.0"
   },
   "devDependencies": {
-    "babel-eslint": "4.1.3",
+    "babel-eslint": "5.0.0-beta6",
     "chai": "~3.4.1",
     "css-modules-require-hook": "~2.1.0",
     "dog-names": "~1.0.2",
     "eslint": "1.10.3",
     "eslint-plugin-react": "3.14.0",
-    "expect-react-shallow": "~1.0.0",
-    "gulp": "3.9.0",
-    "gulp-gh-pages": "0.5.4",
+    "expect-react-shallow": "~1.1.0",
     "mocha": "~2.3.4",
     "mock-require": "~1.2.1",
     "postcss-modules-extract-imports": "~1.0.0",
     "postcss-modules-scope": "~1.0.0",
-    "react": "~0.14.5",
-    "react-dom": "~0.14.5",
+    "react": "~0.14.6",
+    "react-dom": "~0.14.6",
     "react-modal": "~0.6.1"
   },
   "scripts": {
@@ -89,17 +92,6 @@
     "start": "./bin/styleguidist server --config example/styleguide.config.js",
     "lint": "eslint src --ext .js",
     "build": "./bin/styleguidist build --config example/styleguide.config.js",
-    "publish": "npm run build && gulp gh-pages"
-  },
-  "keywords": [
-    "react",
-    "jsx",
-    "styleguide",
-    "style guide",
-    "documentation",
-    "docs",
-    "generator",
-    "component",
-    "components"
-  ]
+    "publish": "npm run build"
+  }
 }

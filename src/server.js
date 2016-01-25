@@ -15,7 +15,7 @@ module.exports = function server(callback) {
 
 	app.use(express.static(config.rootDir));
 
-	app.listen(config.serverPort, config.serverHost, function(err) {
+	app.listen(config.serverPort, function(err) {
 		callback(err, config);
 	});
 };

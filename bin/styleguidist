@@ -13,6 +13,9 @@ switch (argv._[0]) {
 	case 'server':
 		commandServer();
 		break;
+	case 'babel':
+		commandBabel();
+		break;
 	default:
 		commandHelp();
 }
@@ -61,4 +64,16 @@ function commandHelp() {
 		'    ' + chalk.yellow('--config') + '        Config file path',
 		'    ' + chalk.yellow('--verbose') + '       Print debug information',
 	].join('\n'));
+}
+
+function commandBabel() {
+	var compileBabel = require('../src/compileBabel');
+	compileBabel(function(err) {
+		if (err) {
+			console.log(err);
+		}
+		else {
+			console.log('Babel compiled successfully!');
+		}
+	});
 }
